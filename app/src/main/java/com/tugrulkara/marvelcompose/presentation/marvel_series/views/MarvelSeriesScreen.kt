@@ -1,16 +1,13 @@
-package com.tugrulkara.marvelcompose.presentation.marvel_char.views
+package com.tugrulkara.marvelcompose.presentation.marvel_series.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -26,20 +23,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
-import com.tugrulkara.marvelcompose.domain.model.MarvelChar
-import com.tugrulkara.marvelcompose.presentation.Screen
-import com.tugrulkara.marvelcompose.presentation.marvel_char.MarvelCharViewModel
-import com.tugrulkara.marvelcompose.util.Constants
+import com.tugrulkara.marvelcompose.domain.model.MarvelSeries
+import com.tugrulkara.marvelcompose.presentation.marvel_series.MarvelSeriesViewModel
 
 @Composable
-fun MarvelCharScreen(
-    navController: NavController,
-    viewModel: MarvelCharViewModel= hiltViewModel()
-) {
+fun MarvelSeriesScreen(
+    viewModel: MarvelSeriesViewModel= hiltViewModel()) {
 
     val state=viewModel.state.value
+
+    println(state.errorMessage)
 
     Box(modifier = Modifier
         .fillMaxSize()
@@ -48,35 +42,28 @@ fun MarvelCharScreen(
         Column() {
             LazyColumn(modifier = Modifier.fillMaxSize()){
 
-                items(state.marvelCharList){marvelChar->
-
-                    MarvelCharRow(marvelChar = marvelChar, onItemClick = {
-                        navController.navigate(Screen.MarvelSeriesScreen.root+"/{${marvelChar.id}}")
-                    })
-
+                items(state.marvelSeriesList){marvelSeries->
+                    MarvelSeriesRow(marvelSeries = marvelSeries)
                 }
             }
         }
+
     }
-    
+
 }
 
 @Composable
-fun MarvelCharRow(
-    marvelChar: MarvelChar,
-    onItemClick: (MarvelChar)->Unit) {
+fun MarvelSeriesRow(
+    marvelSeries:MarvelSeries) {
 
     Row(modifier = Modifier
         .fillMaxWidth()
-        .clickable {
-            onItemClick(marvelChar)
-        }
         .padding(10.dp),
         horizontalArrangement = Arrangement.SpaceBetween) {
 
         Image(
-            painter = rememberAsyncImagePainter(model = marvelChar.thumbnail+".jpg"),
-            contentDescription = marvelChar.name,
+            painter = rememberAsyncImagePainter(model = marvelSeries.thumbnail+".jpg"),
+            contentDescription = marvelSeries.title,
             modifier = Modifier
                 .padding(16.dp)
                 .size(200.dp, 200.dp)
@@ -87,13 +74,13 @@ fun MarvelCharRow(
             modifier = Modifier.align(Alignment.CenterVertically)
         ) {
 
-             Text(
-                 text = marvelChar.name,
-                 textAlign = TextAlign.Center,
-                 fontSize = 24.sp,
-                 color= Color.White,
-                 modifier = Modifier.fillMaxWidth()
-             )
+            Text(
+                text = marvelSeries.title,
+                textAlign = TextAlign.Center,
+                fontSize = 24.sp,
+                color= Color.White,
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     }
 
