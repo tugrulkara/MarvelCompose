@@ -3,6 +3,7 @@ package com.tugrulkara.marvelcompose.presentation.marvel_char.views
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,19 +36,20 @@ fun MarvelCharScreen(
     navController: NavController,
     viewModel: MarvelCharViewModel= hiltViewModel()
 ) {
-    
+
     val state=viewModel.state.value
-    
+
     Box(modifier = Modifier
         .fillMaxSize()
         .background(color = Color.Black)) {
-        
+
         Column() {
             LazyColumn(modifier = Modifier.fillMaxSize()){
+
                 items(state.marvelCharList){marvelChar->
 
                     MarvelCharRow(marvelChar = marvelChar, onItemClick = {
-
+                        println(marvelChar.thumbnail+".jpg")
                     })
 
                 }
@@ -67,27 +69,29 @@ fun MarvelCharRow(
         .clickable {
             onItemClick(marvelChar)
         }
-        .padding(10.dp)) {
+        .padding(10.dp),
+        horizontalArrangement = Arrangement.SpaceBetween) {
+
+        Image(
+            painter = rememberAsyncImagePainter(model = marvelChar.thumbnail+".jpg"),
+            contentDescription = marvelChar.name,
+            modifier = Modifier
+                .padding(16.dp)
+                .size(200.dp, 200.dp)
+                .clip(RectangleShape))
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.align(Alignment.CenterVertically)) {
+            modifier = Modifier.align(Alignment.CenterVertically)
+        ) {
 
-            Image(painter = rememberAsyncImagePainter(model = marvelChar.thumbnail+".jpg"), contentDescription = marvelChar.name,
-                modifier = Modifier
-                    .height(350.dp)
-                    .fillMaxWidth()
-                    .clip(RectangleShape))
-
-            Spacer(modifier = Modifier.height(5.dp))
-
-            Text(
-                text = marvelChar.name,
-                textAlign = TextAlign.Center,
-                fontSize = 24.sp,
-                color= Color.White,
-                modifier = Modifier.fillMaxWidth()
-            )
+             Text(
+                 text = marvelChar.name,
+                 textAlign = TextAlign.Center,
+                 fontSize = 24.sp,
+                 color= Color.White,
+                 modifier = Modifier.fillMaxWidth()
+             )
         }
     }
 
