@@ -1,6 +1,8 @@
 package com.tugrulkara.marvelcompose.data.di
 
 import com.tugrulkara.marvelcompose.data.remote.MarvelAPI
+import com.tugrulkara.marvelcompose.data.repository.MarvelRepositoryImpl
+import com.tugrulkara.marvelcompose.domain.repository.MarvelRepository
 import com.tugrulkara.marvelcompose.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -24,5 +26,9 @@ object AppModule {
             .build()
             .create(MarvelAPI::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideMarvelRepository(api: MarvelAPI)=MarvelRepositoryImpl(api) as MarvelRepository
 
 }
