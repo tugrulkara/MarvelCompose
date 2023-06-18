@@ -12,6 +12,6 @@ data class MarvelSeriesDto(
     val status: String
 )
 fun MarvelSeriesDto.toSerieList(): List<MarvelSeries>{
-    return data.results.map { resultX: ResultX -> MarvelSeries(
-        id = resultX.id, thumbnail = resultX.thumbnail, title = resultX.title, urls = resultX.urls) }
+    return data.results.map {result -> MarvelSeries(
+        id = result.id, thumbnail = result.thumbnail.path, title = result.title, urls = result.urls) }
 }
