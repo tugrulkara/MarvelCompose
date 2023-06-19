@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                             MarvelCharScreen(navController = navController)
                         }
                         composable(
-                            Screen.MarvelSeriesScreen.root+"/{${CHAR_ID}}"){
+                            route = "${Screen.MarvelSeriesScreen.root}/{${CHAR_ID}}"){
                             MarvelSeriesScreen()
                         }
                     }

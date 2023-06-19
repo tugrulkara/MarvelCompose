@@ -26,9 +26,7 @@ class MarvelSeriesViewModel @Inject constructor(
 
     init {
         stateHandle.get<String>(CHAR_ID)?.let {
-            println(it)
             getMarvelSeries(it)
-            //getMarvelSeries("1017100")
         }
     }
 

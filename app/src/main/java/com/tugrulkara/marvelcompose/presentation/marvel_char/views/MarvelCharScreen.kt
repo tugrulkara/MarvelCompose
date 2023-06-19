@@ -51,7 +51,7 @@ fun MarvelCharScreen(
                 items(state.marvelCharList){marvelChar->
 
                     MarvelCharRow(marvelChar = marvelChar, onItemClick = {
-                        navController.navigate(Screen.MarvelSeriesScreen.root+"/{${marvelChar.id}}")
+                        navController.navigate(route = "${Screen.MarvelSeriesScreen.root}/${marvelChar.id}")
                     })
 
                 }
