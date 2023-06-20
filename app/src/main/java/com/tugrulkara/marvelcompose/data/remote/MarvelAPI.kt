@@ -15,7 +15,7 @@ interface MarvelAPI {
     @GET("/v1/public/characters")
     suspend fun getMarvelChar(
         @Query("series") series:String= "18455, 335, 24323, 758, 23768, 24229, 31494",
-        @Query("orderBy") orderBy:String="name",
+        @Query("orderBy") orderBy:String="-name",
         @Query("limit") limit: Int=100,
         @Query("ts") timeStamp : String= TIME_STAMP.toString(),
         @Query("apikey") apiKey : String=PUBLIC_KEY,
@@ -25,6 +25,7 @@ interface MarvelAPI {
     @GET("v1/public/characters/{characterId}/series")
     suspend fun getMarvelCharSeries(
         @Path("characterId") characterId :String,
+        @Query("orderBy") orderBy:String="startYear",
         @Query("ts") timeStamp : String= TIME_STAMP.toString(),
         @Query("apikey") apiKey : String=PUBLIC_KEY,
         @Query("hash") hashKey : String= HASH.toHex()
