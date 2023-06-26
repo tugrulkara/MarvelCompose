@@ -6,7 +6,7 @@ Marvel Characters application that I developed with Jetpack Compose suitable for
 
 | Home Screen  | Search Screen | Series Screen	| Series Screen |
 | ------------- | ------------- | ------------- | ------------- |
-| ![](https://raw.githubusercontent.com/tugrulkara/MarvelCompose/master/Screens/Screenshot_20230626_161720.png?token=GHSAT0AAAAAAB47D7SGKZBTG72NISWVYG4AZEZS3PQ)  | ![](https://raw.githubusercontent.com/tugrulkara/MarvelCompose/master/Screens/Screenshot_20230626_161753.png?token=GHSAT0AAAAAAB47D7SHJICN2HV3LLK6RI2SZEZS44Q)  | ![](https://raw.githubusercontent.com/tugrulkara/MarvelCompose/master/Screens/Screenshot_20230626_161817.png?token=GHSAT0AAAAAAB47D7SGBJPS2OWWJ6QY6SJQZEZS54Q)  | ![](https://raw.githubusercontent.com/tugrulkara/MarvelCompose/master/Screens/Screenshot_20230626_161830.png?token=GHSAT0AAAAAAB47D7SHJJIJAHUD3FWB6QBSZEZS6LQ) |
+| ![](https://github.com/tugrulkara/MarvelCompose/blob/master/Screens/Screenshot_20230626_161720.png)  | ![](https://github.com/tugrulkara/MarvelCompose/blob/master/Screens/Screenshot_20230626_161753.png)  | ![](https://github.com/tugrulkara/MarvelCompose/blob/master/Screens/Screenshot_20230626_161817.png)  | ![](https://github.com/tugrulkara/MarvelCompose/blob/master/Screens/Screenshot_20230626_161830.png)  |
 
 
 ## Libraries Used
