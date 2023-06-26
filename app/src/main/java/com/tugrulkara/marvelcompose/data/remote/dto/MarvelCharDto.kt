@@ -13,5 +13,5 @@ data class MarvelCharDto(
 )
 
 fun MarvelCharDto.toCharList() : List<MarvelChar> {
-    return data.results.map {result -> MarvelChar(id = result.id, name = result.name, thumbnail = result.thumbnail.path) }
+    return data.results.map {result -> MarvelChar(id = result.id, name = result.name, thumbnail = result.thumbnail.path, description = result.description) }
 }
