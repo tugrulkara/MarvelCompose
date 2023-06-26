@@ -26,4 +26,17 @@ class GetMarvelCharUseCase @Inject constructor(private val repository: MarvelRep
 
     }
 
+    fun executeGetCopyrigth() : Flow<String> = flow{
+
+        try {
+            val marvelCharDto = repository.getMarvelChar()
+            if (marvelCharDto.status.equals("Ok")){
+                emit(marvelCharDto.copyright)
+            }
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+
+    }
+
 }
