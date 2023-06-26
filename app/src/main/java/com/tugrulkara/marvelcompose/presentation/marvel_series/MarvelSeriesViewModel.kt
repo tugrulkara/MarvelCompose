@@ -30,17 +30,21 @@ class MarvelSeriesViewModel @Inject constructor(
         }
     }
 
-    fun getMarvelSeries(characterId:String){
+    private fun getMarvelSeries(characterId:String){
         job?.cancel()
 
+        _state.value=MarvelSeriesState(isLoading = true)
         job=useCase.executeGetMarvelSeries(characterId).onEach {
 
             when(it){
                 is Resource.Success->{
+                    _state.value=MarvelSeriesState(isLoading = false)
                     _state.value= MarvelSeriesState(marvelSeriesList = it.data ?: emptyList())
+                    //_state.value=MarvelSeriesState(errorMessage = "")
                 }
                 is Resource.Error ->{
-                    _state.value=MarvelSeriesState(errorMessage = "Error")
+                    _state.value=MarvelSeriesState(isLoading = false)
+                    _state.value=MarvelSeriesState(errorMessage = it.message.toString())
                 }
                 is Resource.Loading->{
                     _state.value=MarvelSeriesState(isLoading = true)
