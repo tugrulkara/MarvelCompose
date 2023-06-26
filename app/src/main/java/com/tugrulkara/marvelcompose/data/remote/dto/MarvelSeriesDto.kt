@@ -13,5 +13,5 @@ data class MarvelSeriesDto(
 )
 fun MarvelSeriesDto.toSerieList(): List<MarvelSeries>{
     return data.results.map {result -> MarvelSeries(
-        id = result.id, thumbnail = result.thumbnail.path, title = result.title) }
+        id = result.id, thumbnail = result.thumbnail.path, title = result.title , urls = result.urls) }
 }
